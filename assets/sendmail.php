@@ -12,7 +12,7 @@ use GuzzleHttp\Client;
 use Ivory\HttpAdapter\Guzzle6HttpAdapter;
 //  $httpAdapter = new Guzzle6HttpAdapter(new Client());
 $httpAdapter = new Guzzle6HttpAdapter(new Client(['verify' => getenv('ProgramFiles(x86)') . '\Git\bin\curl-ca-bundle.crt']));
-$sparky = new SparkPost($httpAdapter, ['key'=>'3058d5488843ff5772a336e7fbd78d15b778e44e']);
+$sparky = new SparkPost($httpAdapter, ['key'=>'xxxxxxxxxxxxxxxxxxxxxx']);
 
 // Email address verification
 function isEmail($email) {
@@ -64,8 +64,7 @@ if($_POST) {
 
       $mailarray = array();
       $mailarray['html'] = $mailcontent;
-      // $mailarray['from'] = 'ACME Inquiry <from@sparkpostbox.com>';
-      $mailarray['from'] = 'ACME Inquiry <from@syslogicinc.com>';
+      $mailarray['from'] = 'ACME Inquiry <from@sparkpostbox.com>'; // sandbox mail -- for sending more than a few mails, use an actual account
       $mailarray['text'] = $mailcontent;
       $mailarray['subject'] = $subject;
       $mailarray['replyTo'] = $clientEmail;
@@ -73,7 +72,7 @@ if($_POST) {
         [
           'address'=>[
             'name'=>'ACME',
-            'email'=>'shaahin@gmail.com'
+            'email'=>'acme@acme.com'
           ]
         ]
       ];
